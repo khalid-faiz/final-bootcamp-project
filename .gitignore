@@ -1,0 +1,10 @@
+__pycache__/
+migrations/
+testing/
+db.sqlite
+
+# for commiting
+/src/*.*
+*.py
+*.html
+*.css
