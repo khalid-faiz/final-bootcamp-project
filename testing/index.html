@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>search</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="books-container">
+    <div class="col-sm-12 card p-1" style="max-width: 540px;">
+      <div class="card-header text-muted">Generic</div>
+      <div class="row g-0">
+        <div class="col-4">
+          <img class="rounded-0 card-img" src="http://books.google.com/books/content?id=XAgAAAAAMBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;edge=curl&amp;imgtk=AFLRE70kY408GW3xN4lB5oc0GL--5hh7cS4o-Azan1GpMdr7Q_P89fBN6nGAtFXm5i9c2BAmSUbH_FPcXGWXy7odZx763g3VOIB-3W7Gp9G1vkzb6dqYlH2AxxPNRO3rI2LeY7VZiNH6&amp;source=gbs_api">
+        </div>
+        <div class="col-8">
+          <div class="card-body ms-3">
+            <h5 class="card-title">Bulletin of the Atomic Scientists</h5>
+            <p class="card-text">The Bulletin of the Atomic Scientists is the premier public resource on scientific
+              and technological developments that impact global security. Founded by Manhattan Project Scientists, the
+              Bulletin's iconic "Doomsday Clock" stimulates solutions for a...</p>
+          </div>
+        </div>
+      </div>
+      <div class="btn-group" role="group">
+        <button style="border-bottom-right-radius: 0 !important" type="button"
+          class="btn rounded-0 rounded-bottom btn-secondary">Descussion</button>
+        <form action="/user/book" method="POST">
+          <input type="hidden" name="google_id" value="XAgAAAAAMBAJ">
+          <button style="border-bottom-left-radius: 0 !important" class="btn rounded-0 rounded-bottom btn-success">Add
+            to Library</button>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="col-sm-12 card p-1" style="max-width: 540px;">
+      <div class="card-header text-muted">Fiction / Romance / Suspense</div>
+      <div class="row g-0">
+        <div class="col-4">
+          <img class="rounded-0 card-img" src="http://books.google.com/books/publisher/content?id=Ii-pAwAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;edge=curl&amp;imgtk=AFLRE71a-F0rxZqZoLcoXi42xnDqNo-9heLZaSFhrc_6p5EgFcPrfr3PX3no2jUOvonkZPz_5RGsNva37zT0pPXIWZdEjZYYCmhzlxUwWGOC_0b4kgOaMChuYphsXEXIqM07rKRQVISX&amp;source=gbs_api">
+        </div>
+        <div class="col-8">
+          <div class="card-body ms-3">
+            <h5 class="card-title">Dead Man's Rules</h5>
+            <p class="card-text">A woman on a mission, a man with secrets to hide... When tabloid reporter Cere Medina
+              decides to dig into the mysterious cold case death of Marco Gonzales, she hopes it will save her career.
+              Instead, she unearths enough secrets to make a small town ...</p>
+          </div>
+        </div>
+      </div>
+      <div class="btn-group" role="group">
+        <button style="border-bottom-right-radius: 0 !important" type="button"
+          class="btn rounded-0 rounded-bottom btn-secondary">Descussion</button>
+        <form action="/user/book" method="POST">
+          <input type="hidden" name="google_id" value="Ii-pAwAAQBAJ">
+          <button style="border-bottom-left-radius: 0 !important" class="btn rounded-0 rounded-bottom btn-success">Add
+            to Library</button>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="col-sm-12 card p-1" style="max-width: 540px;">
+      <div class="card-header text-muted">Travel / Special Interest / Literary</div>
+      <div class="row g-0">
+        <div class="col-4">
+          <img class="rounded-0 card-img" src="http://books.google.com/books/publisher/content?id=Fuo_BAAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;edge=curl&amp;imgtk=AFLRE72KjPQdAVaiWXJ8VDb7WBsQWGvHZJdslJNe6GrtysbvBEJTifqq79TxBtWjXPWuSa4qUkX_DWZ8VjEwNL2R_WFRl5ZRYkkyiu569FT9HXqfjb35qQNW6OIHRXLAQod4NHDC6UqL&amp;source=gbs_api">
+        </div>
+        <div class="col-8">
+          <div class="card-body ms-3">
+            <h5 class="card-title">Ghost Dance in Berlin</h5>
+            <p class="card-text">Every great city is a restless work in progress, but nowhere is the urban impulse
+              more in flux than in Berlin, that sprawling metropolis located on the fault line of history. A
+              short-lived fever-dream of modernity in the Roaring Twenties, redubbed G...</p>
+          </div>
+        </div>
+      </div>
+      <div class="btn-group" role="group">
+        <button style="border-bottom-right-radius: 0 !important" type="button"
+          class="btn rounded-0 rounded-bottom btn-secondary">Descussion</button>
+        <form action="/user/book" method="POST">
+          <input type="hidden" name="google_id" value="Fuo_BAAAQBAJ">
+          <button style="border-bottom-left-radius: 0 !important" class="btn rounded-0 rounded-bottom btn-success">Add
+            to Library</button>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="col-sm-12 card p-1" style="max-width: 540px;">
+      <div class="card-header text-muted">Juvenile Fiction / Social Issues / Dating &amp; Sex</div>
+      <div class="row g-0">
+        <div class="col-4">
+          <img class="rounded-0 card-img" src="http://books.google.com/books/publisher/content?id=njOLBAAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;edge=curl&amp;imgtk=AFLRE70rSN9QL5jEoZVZHZP9kf8S36BbkF5Vvhr_QCtwTjawvzmT70QFqeRoO2BZe6cYinCRpPBYkJue0JfvgA9ovv7eehllhLMKcEJVVOIqwvYsQPChBC_zuHBEuRlyP5HYeX6gqz9s&amp;source=gbs_api">
+        </div>
+        <div class="col-8">
+          <div class="card-body ms-3">
+            <h5 class="card-title">EL AMOR SE HACE</h5>
+            <p class="card-text">Publicado anteriormente como Free Sex? la pregunta de hoy.Más de 50 000 libros
+              vendidos.Temas:Cómo encontrar parejaCaricias ÍntimasRomances rápidosLigues por internet¿Qué somos?
+              ¿Novios o free?Embarazos no planeadosErrores del noviazgoBichos genital...</p>
+          </div>
+        </div>
+      </div>
+      <div class="btn-group" role="group">
+        <button style="border-bottom-right-radius: 0 !important" type="button"
+          class="btn rounded-0 rounded-bottom btn-secondary">Descussion</button>
+        <form action="/user/book" method="POST">
+          <input type="hidden" name="google_id" value="njOLBAAAQBAJ">
+          <button style="border-bottom-left-radius: 0 !important" class="btn rounded-0 rounded-bottom btn-success">Add
+            to Library</button>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="col-sm-12 card p-1" style="max-width: 540px;">
+      <div class="card-header text-muted">Generic</div>
+      <div class="row g-0">
+        <div class="col-4">
+          <img class="rounded-0 card-img" src="http://books.google.com/books/content?id=GZAoAQAAIAAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;imgtk=AFLRE71_gtHMYXS3RCffYrX83t9Fj3W1PtozdUX-S22abOPkaz-S_UiDjeODgD_FOWgGnxouLksaBjWri_JoRyjt8wyoR1AP_N64wohV7lHkD5Y2HjVQyMhQmN5bbRDArre75m4wokPq&amp;source=gbs_api">
+        </div>
+        <div class="col-8">
+          <div class="card-body ms-3">
+            <h5 class="card-title">Harry Potter and the Deathly Hallows</h5>
+            <p class="card-text">Harry Potter is preparing to leave the Dursleys and Privet Drive for the last time.
+              But the future that awaits him is full of danger, not only for him, but for anyone close to him - and
+              Harry has already lost so much. Only by destroying Voldemort's ...</p>
+          </div>
+        </div>
+      </div>
+      <div class="btn-group" role="group">
+        <button style="border-bottom-right-radius: 0 !important" type="button"
+          class="btn rounded-0 rounded-bottom btn-secondary">Descussion</button>
+        <form action="/user/book" method="POST">
+          <input type="hidden" name="google_id" value="GZAoAQAAIAAJ">
+          <button style="border-bottom-left-radius: 0 !important" class="btn rounded-0 rounded-bottom btn-success">Add
+            to Library</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-sm-12 card p-1" style="max-width: 540px;">
+      <div class="card-header text-muted">Fiction / Thrillers / Crime</div>
+      <div class="row g-0">
+        <div class="col-4">
+          <img class="rounded-0 card-img" src="http://books.google.com/books/content?id=hxL2qWMAgv8C&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;edge=curl&amp;imgtk=AFLRE70tTDDWCeb2Z7_mFFQpE-cJoo1ngsDMPUTfY-zz3xHJO8-fO5v1g3mTKNHrmq-frHiDWWDbLwb88mRjC5mPiQdVe7Ayl5sYJJ-8SbFryOp09fcSiPg1-NWq-IVMrX0eWEYsZF6T&amp;source=gbs_api">
+        </div>
+        <div class="col-8">
+          <div class="card-body ms-3">
+            <h5 class="card-title">Gone Girl</h5>
+            <p class="card-text">THE ADDICTIVE No.1 BESTSELLER AND INTERNATIONAL PHENOMENONOVER 20 MILLION COPIES SOLD
+              WORLDWIDETHE BOOK THAT DEFINES PSYCHOLOGICAL THRILLERWho are you?What have we done to each other?These
+              are the questions Nick Dunne finds himself asking on the mor...</p>
+          </div>
+        </div>
+      </div>
+      <div class="btn-group" role="group">
+        <button style="border-bottom-right-radius: 0 !important" type="button"
+          class="btn rounded-0 rounded-bottom btn-secondary">Descussion</button>
+        <form action="/user/book" method="POST">
+          <input type="hidden" name="google_id" value="hxL2qWMAgv8C">
+          <button style="border-bottom-left-radius: 0 !important" class="btn rounded-0 rounded-bottom btn-success">Add
+            to Library</button>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="col-sm-12 card p-1" style="max-width: 540px;">
+      <div class="card-header text-muted">Generic</div>
+      <div class="row g-0">
+        <div class="col-4">
+          <img class="rounded-0 card-img" src="http://books.google.com/books/content?id=G5AlAQAAMAAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;imgtk=AFLRE724rh6of6hmA50Wmt_OnzeZUVyFwQUVcLdF4meof1feLLpAIPVjcdqXq7Zk2YbdjMjn2KNlbz4FNdaP5iDHjsHVbMKtF0M9QGhM2ScOEsPfiWImHWkaTSej0QIy2qvhxBBAy0Qy&amp;source=gbs_api">
+        </div>
+        <div class="col-8">
+          <div class="card-body ms-3">
+            <h5 class="card-title">Martha's Vineyard, Summer Resort, After 100 Years</h5>
+            <p class="card-text">No description</p>
+          </div>
+        </div>
+      </div>
+      <div class="btn-group" role="group">
+        <button style="border-bottom-right-radius: 0 !important" type="button"
+          class="btn rounded-0 rounded-bottom btn-secondary">Descussion</button>
+        <form action="/user/book" method="POST">
+          <input type="hidden" name="google_id" value="G5AlAQAAMAAJ">
+          <button style="border-bottom-left-radius: 0 !important" class="btn rounded-0 rounded-bottom btn-success">Add
+            to Library</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
