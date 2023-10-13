@@ -24,7 +24,7 @@
           <!-- Modal Header -->
           <div class="modal-header">
             <h4 class="modal-title">Search for a book</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearResults()"></button>
           </div>
   
           <!-- Modal body -->
@@ -38,16 +38,18 @@
                 </button>
               </div>
             </div>
-            <!-- cards for results -->
+            <!-- Message -->
+            <div class="row" id="search-message">
+              
+            </div>
+            <!-- Cards for results -->
             <div id="results">
             </div>
           </div>
         </div>
       </div>
   
-      <!--  -->
-  
-
+      <!-- Scripts -->
       <script src="{{url_for('static', filename='script.js')}}"></script>
 
 {% endblock %}
