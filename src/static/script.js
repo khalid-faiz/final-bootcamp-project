@@ -10,7 +10,7 @@ const userBookContainer = document.getElementById('books-container');
 
 
 // Function to create HTML for a book card
-function createBookCardHTML(item, withAddButton = true, bookDbId) {
+function createBookCardHTML(item, withAddButton = true) {
   try {
     // Destructure book information from the 'item' object
     let {
@@ -49,7 +49,7 @@ function createBookCardHTML(item, withAddButton = true, bookDbId) {
                 <button style="border-bottom-left-radius: 0 !important" class="btn rounded-0 rounded-bottom btn-success">Add
                 to Library</button>
             </form>`
-      : `<a class="btn btn-danger" onclick="fetch('/user/book?id=${bookDbId}', {method:'DELETE'}).then(() => {
+      : `<a class="btn btn-danger" onclick="fetch('/user/book?google_id=${id}', {method:'DELETE'}).then(() => {
                 window.location.reload();
             })">Remove</a>`;
 
@@ -87,7 +87,7 @@ function createBookCardHTML(item, withAddButton = true, bookDbId) {
 
 
 // Function to fetch books and populate the container
-async function fetchBooks(keyword, isFromIDsArray = false, books) {
+async function fetchBooks(keyword, isFromIDsArray = false, bookGoogleIds) {
   let booksArray, container;
   // If the user is searching
   if (!isFromIDsArray) {
@@ -102,29 +102,27 @@ async function fetchBooks(keyword, isFromIDsArray = false, books) {
   // For showing user's books
   else {
     container = userBookContainer;
-    // Get the book list from the DOM
+    // Create a book container
     booksArray = [];
     let item, response;
-    // Fetch individual book data for each book in 'books'
-    for (let index = 0; index < books.length; index++) {
-      const book = books[index];
-      const google_id = book.google_id;
-      // Check if the book data is not in the localStorage
-      if (!localStorage.getItem(google_id)) {
+    // Fetch individual book data for each google id
+    bookGoogleIds.forEach(async bookGoogleId => {
+      if (!localStorage.getItem(bookGoogleId)){
         // Fetch the book data from Google Books API
         response = await fetch(
-          `${API_ENDPOINT}/${book.google_id}?key=${API_KEY}`
+          `${API_ENDPOINT}/${bookGoogleId}?key=${API_KEY}`
         );
         item = await response.json();
         // Save the book data in local Storage
-        localStorage.setItem(book.google_id, JSON.stringify(item));
+        localStorage.setItem(bookGoogleId, JSON.stringify(item));
       }
       else {
-        itemText = localStorage.getItem(book.google_id);
+        itemText = localStorage.getItem(bookGoogleId);
         item = JSON.parse(itemText);
       }
       booksArray.push(item);
-    }
+      }
+    );
   }
 
   
@@ -134,8 +132,7 @@ async function fetchBooks(keyword, isFromIDsArray = false, books) {
     const item = booksArray[index];
     const card = createBookCardHTML(
       item,
-      !isFromIDsArray,
-      books ? books[index].id : ""
+      !isFromIDsArray
     );
     rows += card;
   }

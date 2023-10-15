@@ -23,12 +23,12 @@ def load_user(user_id):
 
 # Define a function to get a list of books associated with a user as a
 # JSON string
-def get_book_list(user: User):
+def get_book_ids_list(user: User):
     # Map the user's books to a list of dictionaries with book information
-    books_map = map(lambda book: book.to_dict() , user.books)
+    book_ids_map = map(lambda book: book.google_id , user.books)
     # Convert the list of dictionaries to a JSON string and return it
-    books = json.dumps(list(books_map))
-    return books
+    book_ids = json.dumps(list(book_ids_map))
+    return book_ids
 
 
 # Route for the /user page, accessible only when a user is authenticated
@@ -51,11 +51,11 @@ def book():
     if request.method == "POST":
         # Check if the book with the given Google ID exists
         google_id = request.form.get("google_id")
-        book = Book.query.filter_by(google_id=google_id).first()
+        book = Book.query.get(google_id)
         if not book:
             # If the book doesn't exist
             # Create a new Book object and add it to the database
-            book = Book(google_id=google_id)
+            book = Book(google_id)
             db.session.add(book)
             db.session.commit()
 
@@ -68,11 +68,12 @@ def book():
         # On if assertion failed, flash a massage to the user
         except AssertionError:
             flash("This book is already in your library", "info")
+        return redirect(url_for("user.book"))
 
     # Delete a user's book
     elif request.method == "DELETE":
         args = request.args
-        book_id = int(args.get("id"))
+        book_id = args.get("google_id")
         # Retrieve the Book object to be deleted by its ID
         book = Book.query.get(book_id)
         # Remove the book from the user's list of books and commit the changes
@@ -80,7 +81,7 @@ def book():
         db.session.commit()
 
     # Return the updated list of user's books
-    return render_template("user/book.html", books=get_book_list(current_user))
+    return render_template("user/book.html", books=json.dumps([book.google_id for book in current_user.books]))
 
 
 # Route for user registration, allowing new users to create an account

@@ -13,7 +13,7 @@ user_book = db.Table(
                         db.Column(
                             'book_id',
                             db.Integer,
-                            db.ForeignKey('book.id')
+                            db.ForeignKey('book.google_id')
                             )
                      )
 user_category = db.Table(
@@ -34,7 +34,7 @@ book_category = db.Table(
                         db.Column(
                             'book_id',
                             db.Integer,
-                            db.ForeignKey('book.id')
+                            db.ForeignKey('book.google_id')
                             ),
                         db.Column(
                             'category_id',
@@ -53,7 +53,6 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String, nullable=False)
     email = db.Column(db.String, unique=True, nullable=False)
     password = db.Column(db.String, nullable=False)
-    is_admin = db.Column(db.Boolean, nullable=False, default=False)
 
     # Relationships
     # One-to-many
@@ -85,9 +84,7 @@ class User(UserMixin, db.Model):
 class Book(db.Model):
     # Columns
     __tablename__ = "book"
-    id = db.Column(db.Integer, primary_key=True)
-    google_id = db.Column(db.String, unique=True, nullable=False)
-    is_public = db.Column(db.Boolean, nullable=False, default=False)
+    google_id = db.Column(db.String, unique=True, nullable=False, primary_key=True)
 
     # Relationships
     # One-to-many
@@ -106,16 +103,12 @@ class Book(db.Model):
         backref="book"
         )
 
-    def __init__(self, google_id, is_public=False):
+    def __init__(self, google_id):
         self.google_id = google_id
-        self.is_public = is_public
 
     def __repr__(self):
         return f'<Book {self.google_id}>'
     
-    # Define a function that returns a dictionary representation
-    def to_dict(self):
-        return {"id": self.id, "google_id": self.google_id}
 
 # Category model  
 class Category(db.Model):
@@ -156,7 +149,7 @@ class Comment(db.Model):
     # Forign keys
     # Many-to-one
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    book_id = db.Column(db.Integer, db.ForeignKey('book.id'))
+    book_id = db.Column(db.Integer, db.ForeignKey('book.google_id'))
 
     def __init__(self, content, is_deleted, is_editted):
         self.content = content
@@ -177,4 +170,4 @@ class Rating(db.Model):
     # Forign keys
     # Many-to-one
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    book_id = db.Column(db.Integer, db.ForeignKey('book.id'))
+    book_id = db.Column(db.Integer, db.ForeignKey('book.google_id'))
