@@ -1,0 +1,358 @@
+* {
+    box-sizing: border-box;
+}
+
+.book-image{
+    height: 300px;
+}
+.count-badge{
+    width:fit-content;
+    height: fit-content;
+    position: absolute;
+    margin-top: 250px;
+    margin-right: -110px;
+    background-color: #655E8B;
+    color:white;
+    border-radius: 10px;
+    padding: 5px;
+}
+.category-list{
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.75rem;
+}
+.category-badge{
+    width: fit-content;
+    height: fit-content;
+    padding: 0.5em;
+    background-color: #E5F4F6;
+    color:#2EA5BC;
+    border-radius: 0.25em;
+    cursor: pointer;
+}
+.category-badge.added{
+    background-color: #0091AE;
+    color:white;
+}
+#dont-show{
+    opacity: 0;
+    margin: -20px;
+}
+.wrap {
+    width: 400px;
+    margin: 20px 5rem;
+    padding: 20px;
+    position: relative;
+    perspective: 350;
+    perspective-origin: 50% 50%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.wrap:hover .book {
+    cursor: pointer;
+    transform: rotateX(0deg) rotateZ(0deg);
+    transition: transform 0.75s;
+}
+.wrap:hover .back {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    transition: box-shadow 0.75s;
+}
+.wrap:hover .gloss::before {
+    left: 140%;
+    transition: left 0.75s;
+}
+
+.book {
+    position: relative;
+    display: block;
+    width: fit-content;
+    height: 300px;
+    background: url(http://static.saimiri.fi/images/brigands-of-the-moon-with-spine.jpg) no-repeat -25px 0;
+    background-size: cover;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    transform-style: preserve-3d;
+    transform: rotateX(65deg) rotateZ(-45deg);
+    transition: transform 1s;
+}
+.book::before {
+    position: absolute;
+    display: block;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: -20px;
+    width: 20px;
+    transform: rotateY(-90deg);
+    background: url(http://static.saimiri.fi/images/brigands-of-the-moon-with-spine.jpg) no-repeat -4px 0;
+    background-size: cover;
+    transform-origin: 100% 0;
+}
+.book::after {
+    position: absolute;
+    display: block;
+    content: "";
+    bottom: -20px;
+    left: 0;
+    right: 3px;
+    height: 20px;
+    background: linear-gradient(0deg, #aaa, #ccc);
+    background-size: auto 2px;
+    box-shadow: inset 3px 4px 5px rgba(0, 0, 0, 0.25);
+    transform-style: preserve-3d;
+    transform: rotateX(-90deg) translateZ(-1px);
+    transform-origin: 100% 0;
+}
+
+.spine {
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    transform-style: preserve-3d;
+    transform: rotateX(-90deg) rotateY(-90deg);
+    transform-origin: 0 0;
+}
+
+.back {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: inherit;
+    transform: translateZ(-20px);
+    background: #888;
+    box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.4);
+    transition: box-shadow 1s;
+}
+
+.gloss {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: fit-content;
+    overflow: hidden;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.gloss::before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -40%;
+    width: 40%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+    transition: left 1s;
+}
+
+
+.book-page-container h2, .book-page-container h3{
+    color:#0091AE;
+    margin: 1rem 0rem 0.1rem;
+}
+
+#book-info-container{
+    display: flex;
+    height: inherit;
+    padding: 0px 1rem;
+}
+.info-container{
+    width: 50%;
+}
+.book-page-info-bg{
+    background-color: #F1F4F7;
+    margin:0;
+    padding: 1.5rem;
+}
+
+.rating-container{
+    display: flex;
+    align-items: flex-start;
+    justify-content: right;
+}
+
+@media only screen and (max-width: 1100px) {
+    .rating-container{
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+    .current-rating-border{
+        display:none !important;
+    }
+    .current-rating{
+        padding: auto;
+    }
+}
+
+.rating-container > *{
+    display: inline;
+}
+.rating-container > div > h2{
+    display: inline;
+    margin: 0;
+}
+.stars-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+.current-rating{
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-top: 0;
+    padding: 3rem;
+    padding-right: 10rem;
+    background-color: #F1F4F7;
+    border-bottom-left-radius: 3rem;
+}
+.current-rating-border{
+    background-color: #F1F4F7;
+    width:3rem;
+    height: 3rem;
+}
+.current-rating-border-white{
+    width:inherit;
+    height: inherit;
+    background-color: white;
+    border-top-right-radius: 3rem;
+}
+.average-rating{
+    position: absolute;
+    height: 37px;
+    width: 138.25px;
+    margin-left: 46.75px;
+    background-color: #F1F4F7;
+    opacity: 0.65;
+}
+.user-rating{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3rem;
+    gap:1.5rem;
+    margin-right: auto;
+}
+.user-rating svg{
+    fill:#FFD1C5;
+    cursor: pointer;
+}
+#comments-divider{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width:70%;
+    margin: 2rem 15% 2rem;
+}
+#comments-divider h2{
+    margin: 0 0.1rem;
+}
+#comments-divider span:first-child, #comments-divider span:last-child {
+    width: 50%;
+    height: 5px;
+    background-size: 100% 5px;
+    background-position: 0 0, 0 100%;
+    background-repeat: no-repeat;
+}
+
+#comments-divider span:first-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-image: linear-gradient(90deg, transparent, #0091AE);
+}
+#comments-divider span:nth-child(2) {
+    color: #000; padding: 0px 5px; width: auto; white-space: nowrap;
+}
+#comments-divider span:last-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-image: linear-gradient(90deg, #0091AE, transparent);
+}
+.comment-input .row .form-control{
+    width: 50% !important;
+    margin-left: auto;
+    margin-right: 0.5em;
+}
+.comment-input .row .btn{
+    margin-right: auto;
+    height: fit-content;
+    align-self: flex-end;
+}
+.comment{
+    margin: 2rem;
+    display: grid;
+    padding: 0.2em;
+    padding-bottom: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    border-left: solid #ddd 1px;
+    grid-template-columns: 1fr 1fr;
+    grid-column: span 2;
+}
+    
+.comment .comment-writer{
+    background-color: #2EA5BC;
+    color:white;
+    width:fit-content;
+    padding:0.5em;
+    border-radius: 0.2em;
+}
+.comment .comment-timestamp{
+    margin-left: auto;
+    background-color: #655E8B;
+    color:white;
+    padding: 0.5em;
+    border-radius: 0.2em;
+}
+.comment .comment-content{
+    grid-column: span 2;
+    padding:0.5em;
+}
+.comment .reply-to-comment{
+    grid-column: span 2;
+    display:flex;
+    justify-content: flex-end;
+}
+.comment-reply-input{
+    display: flex;
+    align-items: end;
+    gap: 0.5em;
+    margin-left: 1em;
+    margin-right: auto;
+    width:100%;
+    transition: display 1s ease-in-out;
+}
+.comment-reply-input.hidden-input{
+    display: none;
+}
+.comment-reply-input .form-control{
+    width: 80% !important;
+}
+.comment-reply-input .btn{
+    width: fit-content;
+    height: fit-content;
+}
+.reply-icon{
+    margin-left: -5rem;
+    margin-right: 1em;
+    cursor: pointer;
+}

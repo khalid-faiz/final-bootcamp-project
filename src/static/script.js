@@ -74,7 +74,7 @@ function createBookCardHTML(item, withAddButton = true, bookDbId) {
             </div>
             <div class="btn-group" role="group">
             <button style="border-bottom-right-radius: 0 !important" type="button"
-                class="btn rounded-0 rounded-bottom btn-secondary">Descussion</button>
+                class="btn rounded-0 rounded-bottom btn-secondary">Book Page</button>
             ${actionBtn}
             </div>
         </div>
@@ -87,8 +87,8 @@ function createBookCardHTML(item, withAddButton = true, bookDbId) {
 
 
 // Function to fetch books and populate the container
-async function fetchBooks(keyword, isFromIDsArray = false) {
-  let books, booksArray, container;
+async function fetchBooks(keyword, isFromIDsArray = false, books) {
+  let booksArray, container;
   // If the user is searching
   if (!isFromIDsArray) {
     container = resultsContainer;
@@ -103,8 +103,6 @@ async function fetchBooks(keyword, isFromIDsArray = false) {
   else {
     container = userBookContainer;
     // Get the book list from the DOM
-    books = JSON.parse(container.innerText);
-    console.log(books);
     booksArray = [];
     let item, response;
     // Fetch individual book data for each book in 'books'
@@ -141,7 +139,6 @@ async function fetchBooks(keyword, isFromIDsArray = false) {
     );
     rows += card;
   }
-  console.log(container);
   container.innerHTML = rows;
   container.style.display = "grid";
 }
@@ -183,4 +180,5 @@ searchInput.addEventListener('keyup', (event)=>{
 })
 
 // Fetch books and populate the container (isFromIDsArray = true for the initial load)
-fetchBooks('', isFromIDsArray = true);
+fetchBooks('', isFromIDsArray = true, JSON.parse(userBookContainer.innerText));
+

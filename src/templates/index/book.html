@@ -1,0 +1,222 @@
+{% extends "_base.html" %}
+{% block css %}
+
+<!-- Adding css for the book page -->
+<link rel="stylesheet" href="{{url_for('static', filename='book.css')}}">
+
+{% endblock %}
+
+{% block content %}
+    <div id="book-data-dict" style="display: none;">{{ book }}</div>
+    <!-- page for /book?id=<bookDbId>&google_id=<google_id> -->
+    <div class="book-page-container">
+        <div class="book-page-info-bg">
+            <h2 id="book-title">New Scientist</h2>
+            <div id="book-info-container">
+                <div class="info-container">
+                    <div>
+                        <h3>Author</h3>
+                        <span id="book-author">Reed Business Information</span>
+                    </div>
+                    <div>
+                        <h3>Description</h3>
+                        <span id="book-description">New Scientist magazine was launched in 1956 "for all those men and women who are interested in scientific discovery, and in its industrial, commercial and social consequences". The brand's mission is no different today - for its consumers, New Scientist reports, explores and interprets the results of human endeavour set in the context of society and culture.</span>
+                    </div>
+                    <div>
+                        <h3>Publishing Date</h3>
+                        <span>1965-07-08</span>
+                    </div>
+                    <div>
+                        <h3>Categories</h3>
+                        <div id="book-categories" class="category-list">
+                        </div>
+                    </div>
+                </div>
+                <a href="http://books.google.com.eg/books?id=Bff57um2QCIC&hl=&source=gbs_api">
+        
+                    <div class="wrap">
+                        <div class="book">
+                            <span class="spine"></span>
+                            <span class="back"></span>
+                            <span class="gloss">
+                                <img class="book-image"
+                                src="http://books.google.com/books/content?id=Bff57um2QCIC&printsec=frontcover&img=1&zoom=6&edge=curl&imgtk=AFLRE71gV9xSOemdpu4FA0sNPUP8nkklR0B2ow5iimI7V6y2nTYviMHXTI5eB0kt9ZgdGwPW0hqgr6k1nukzP32f6kxPmStlIFzlmT6h3WaskH7sfJZcYPegUETpG5CAWYmyrBmgKWS7&source=gbs_api"
+                                alt="">
+                            <span id="book-page-count" class="count-badge">52 Pages</span>
+                        </span>
+                        <img class="book-image" id="dont-show"
+                        src="http://books.google.com/books/content?id=Bff57um2QCIC&printsec=frontcover&img=1&zoom=6&edge=curl&imgtk=AFLRE71gV9xSOemdpu4FA0sNPUP8nkklR0B2ow5iimI7V6y2nTYviMHXTI5eB0kt9ZgdGwPW0hqgr6k1nukzP32f6kxPmStlIFzlmT6h3WaskH7sfJZcYPegUETpG5CAWYmyrBmgKWS7&source=gbs_api"
+                        alt="">
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="rating-container">
+            <div class="user-rating">
+                <h3>Rate the book</h3>
+                <div class="stars-container">
+                    <span class="star"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
+                        <path d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
+                    c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
+                    c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685
+                    c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
+                    c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
+                    C22.602,0.567,25.338,0.567,26.285,2.486z" />
+                    </svg></span>
+                    <span class="star"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
+                            <path d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
+                            c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
+                            c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685
+                        c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
+                        c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
+                        C22.602,0.567,25.338,0.567,26.285,2.486z" />
+                        </svg></span>
+                    <span class="star"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
+                            <path d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
+                        c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
+                        c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685
+                        c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
+                        c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
+                        C22.602,0.567,25.338,0.567,26.285,2.486z" />
+                        </svg></span>
+                    <span class="star"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
+                            <path d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
+                            c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
+                        c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685
+                        c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
+                        c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
+                        C22.602,0.567,25.338,0.567,26.285,2.486z" />
+                        </svg></span>
+                    <span class="star"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
+                            <path d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
+                        c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
+                        c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685
+                        c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
+                        c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
+                        C22.602,0.567,25.338,0.567,26.285,2.486z" />
+                        </svg></span>
+                </div>
+            </div>
+            <br>
+            <div class="current-rating-border">
+                <div class="current-rating-border-white"></div>
+            </div>
+            <div class="current-rating">
+                <h2>Rating</h2>
+                <div class="stars-container">
+                    <span class="star"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
+                        <path style="fill:#FF7A59" d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
+                    c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
+                    c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685
+                    c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
+                    c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
+                    C22.602,0.567,25.338,0.567,26.285,2.486z" />
+                    </svg></span>
+                    <span class="star"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
+                            <path style="fill:#FF7A59" d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
+                            c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
+                            c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685
+                        c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
+                        c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
+                        C22.602,0.567,25.338,0.567,26.285,2.486z" />
+                        </svg></span>
+                    <span class="star"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
+                            <path style="fill:#FF7A59" d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
+                        c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
+                        c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685
+                        c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
+                        c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
+                        C22.602,0.567,25.338,0.567,26.285,2.486z" />
+                        </svg></span>
+                    <span class="star"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
+                            <path style="fill:#FF7A59" d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
+                            c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
+                        c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685
+                        c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
+                        c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
+                        C22.602,0.567,25.338,0.567,26.285,2.486z" />
+                        </svg></span>
+                    <span class="star"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
+                            <path style="fill:#FF7A59" d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
+                        c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
+                        c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685
+                        c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
+                        c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
+                        C22.602,0.567,25.338,0.567,26.285,2.486z" />
+                        </svg></span>
+                    <div class="average-rating"></div>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="comments">
+            <div id="comments-divider"><span></span><h2>Comments</h2><span></span></div>
+            <div class="comment-input">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <textarea class="form-control" placeholder="Add a comment"></textarea>
+                    <button class="btn btn-secondary col-1">Add</button>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+            <div class="comments-container">
+                <div class="comment">
+                    <div class="comment-writer">Username</div>
+                    <div class="comment-timestamp">24 May 2023, 11:32 AM</div>
+                    <div class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime adipisci molestiae iusto eius optio inventore, repudiandae neque cum tempore asperiores velit officiis ut! Corrupti porro voluptatibus veritatis autem odio iure!</div>
+                    <div class="reply-to-comment">
+                        <div class="comment-reply-input hidden-input">
+                            <textarea class="form-control" placeholder="Add a comment"></textarea>
+                            <button class="btn btn-secondary col-1">Add</button>
+                        </div>
+                        <svg class="reply-icon" width="100px" height="100px" class="svg-icon" style="width: 1.75em; height: 1.75em;vertical-align: middle;fill: #FF7A59;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M356.6592 154.99264q17.32608 0 30.0032 12.4928t12.67712 30.16704-12.67712 30.33088l-198.67648 198.67648 409.33376 0q78.00832 0 149.17632 30.33088t122.49088 81.83808 81.83808 122.49088 30.49472 149.34016l0 42.65984q0 17.67424-12.4928 30.16704t-30.16704 12.4928q-17.32608 0-30.0032-12.67712t-12.67712-30.0032l0-42.65984q0-60.66176-23.67488-115.99872t-63.67232-95.3344-95.3344-63.67232-115.99872-23.67488l-409.33376 0 198.67648 199.00416q12.67712 12.67712 12.67712 30.0032 0 17.67424-12.4928 30.33088t-30.16704 12.67712-30.33088-12.67712l-271.33952-271.6672q-12.32896-12.32896-12.32896-30.33088 0-17.67424 12.32896-30.0032l271.33952-271.6672q12.67712-12.67712 30.33088-12.67712z"  /></svg>
+                    </div>
+                    <div class="comment">
+                        <div class="comment-writer">Username</div>
+                        <div class="comment-timestamp">24 May 2023, 11:32 AM</div>
+                        <div class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime adipisci molestiae iusto eius optio inventore, repudiandae neque cum tempore asperiores velit officiis ut! Corrupti porro voluptatibus veritatis autem odio iure!</div>
+                        <div class="comment">
+                            <div class="comment-writer">Username</div>
+                            <div class="comment-timestamp">24 May 2023, 11:32 AM</div>
+                            <div class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime adipisci molestiae iusto eius optio inventore, repudiandae neque cum tempore asperiores velit officiis ut! Corrupti porro voluptatibus veritatis autem odio iure!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-writer">Username</div>
+                    <div class="comment-timestamp">24 May 2023, 11:32 AM</div>
+                    <div class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime adipisci molestiae iusto eius optio inventore, repudiandae neque cum tempore asperiores velit officiis ut! Corrupti porro voluptatibus veritatis autem odio iure!</div>
+                    <div class="comment">
+                        <div class="comment-writer">Username</div>
+                        <div class="comment-timestamp">24 May 2023, 11:32 AM</div>
+                        <div class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime adipisci molestiae iusto eius optio inventore, repudiandae neque cum tempore asperiores velit officiis ut! Corrupti porro voluptatibus veritatis autem odio iure!</div>
+                        <div class="comment">
+                            <div class="comment-writer">Username</div>
+                            <div class="comment-timestamp">24 May 2023, 11:32 AM</div>
+                            <div class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime adipisci molestiae iusto eius optio inventore, repudiandae neque cum tempore asperiores velit officiis ut! Corrupti porro voluptatibus veritatis autem odio iure!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+
+<!-- js file -->
+<script src="{{url_for('static', filename='book.js')}}"></script>
+
+{% endblock %}

@@ -1,23 +1,44 @@
 <!-- Navigation -->
-<header class="p-3 text-bg-dark">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="{{ url_for('index.home') }}" class="nav-link px-2 text-secondary">Home</a></li>
-        </ul>
-  
-        <div class="text-end">
-          {% if current_user.is_authenticated %}
-          <a href="{{ url_for('user.index') }}"><button type="button" class="btn btn-info me-2">profile</button></a>
-          <a href="{{ url_for('user.logout') }}"><button type="button" class="btn btn-danger me-2">Logout</button></a>
-          {% else %}
-            {% if url_for(request.endpoint) != url_for('user.login') %}
-              <a href="{{ url_for('user.login') }}"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
-            {% endif %}
-            <a href="{{ url_for('user.register') }}"><button type="button" class="btn btn-success">Sign up</button></a>
-          {% endif %}
-            
-        </div>
-      </div>
-    </div>
-  </header>
+<header id="header" class="p-3">
+  <ul class="nav">
+  <li><a href="{{ url_for('index.home') }}" class="nav-link px-2" id="home-link">Home</a></li>
+  </ul>
+
+  <div class="text-end" id="header-btn-container">
+    {% if current_user.is_authenticated %}
+      {% if url_for(request.endpoint) != url_for('user.index') %}
+        <a href="{{ url_for('user.index') }}">
+          <button class="header-btn blue-btn">
+              <div class="sign"><svg viewBox="0 0 512 512" ><path d="m 255.99999,38.217181 c -102.04407,0 -194.421244,60.672908 -234.949804,154.322429 -40.528623,93.64966 -21.52805136,202.5295 48.324649,276.9189 a 13.716063,13.716063 0 0 0 22.920319,-4.79836 C 116.91748,395.32231 182.42012,349.07281 255.99999,349.07281 c 73.57988,0 139.08252,46.2495 163.70485,115.58734 a 13.716063,13.716063 0 0 0 22.92032,4.79836 c 69.85271,-74.3894 88.85327,-183.26924 48.32465,-276.9189 C 450.42125,98.890089 358.04407,38.217181 255.99999,38.217181 Z m 0,27.429384 c 91.18156,0 173.56402,54.109015 209.77764,137.788005 33.35026,77.0626 21.50984,165.4446 -29.30443,230.86576 -24.17763,-49.32055 -67.3042,-86.06859 -118.51601,-102.72803 34.08815,-20.93188 56.90347,-58.55571 56.90347,-101.36015 0,-65.48236 -53.37831,-118.86066 -118.86067,-118.86066 -65.48235,0 -118.86066,53.3783 -118.86066,118.86066 0,42.80444 22.81532,80.42827 56.90347,101.36015 C 142.83099,348.23174 99.704424,384.97978 75.526798,434.30033 24.712512,368.87917 12.872097,280.49717 46.22236,203.43457 82.435985,119.75558 164.81844,65.646565 255.99999,65.646565 Z m 0,73.134305 c 50.65844,0 91.43128,40.77284 91.43128,91.43128 0,50.65844 -40.77284,91.43128 -91.43128,91.43128 -50.65843,0 -91.43127,-40.77284 -91.43127,-91.43128 0,-50.65844 40.77284,-91.43128 91.43127,-91.43128 z" /></svg></div>
+              <div class="text">Profile</div>
+          </button>
+        </a>
+      {% endif %}
+
+      <a href="{{ url_for('user.logout') }}">
+        <button class="header-btn">
+            <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+            <div class="text">Logout</div>
+        </button>
+      </a>
+    {% else %}
+      {% if url_for(request.endpoint) != url_for('user.signup') %}
+        <a href="{{ url_for('user.signup') }}">
+          <button class="header-btn blue-btn">
+              <div class="sign"><svg viewBox="0 0 512 512"><path d="M 105.9,294.1 228.7,171.3 c 7.2,-7.2 17.1,-11.3 27.3,-11.3 10.2,0 20.1,4.1 27.3,11.3 l 122.8,122.8 c 6.4,6.4 9.9,15 9.9,24 0,18.7 -15.2,33.9 -33.9,33.9 H 320 v 128 c 0,17.7 -14.3,32 -32,32 h -64 c -17.7,0 -32,-14.3 -32,-32 V 352 H 129.9 C 111.2,352 96,336.8 96,318.1 c 0,-9 3.6,-17.6 9.9,-24 z M 96,160 V 96 c 0,-17.7 14.3,-32 32,-32 h 256 c 17.7,0 32,14.3 32,32 v 64 c 0,17.7 14.3,32 32,32 17.7,0 32,-14.3 32,-32 V 96 C 480,43 437,0 384,0 H 128 C 75,0 32,43 32,96 v 64 c 0,17.7 14.3,32 32,32 17.7,0 32,-14.3 32,-32 z"></path></svg></div>
+              <div class="text">Signup</div>
+          </button>
+        </a>
+      {% endif %}
+      {% if url_for(request.endpoint) != url_for('user.login') %}
+        <a href="{{ url_for('user.login') }}">
+          <button class="header-btn">
+              <div class="sign"><svg viewBox="0 0 512 512"><path d="m 217.9,105.9 122.8,122.8 c 7.2,7.2 11.3,17.1 11.3,27.3 0,10.2 -4.1,20.1 -11.3,27.3 L 217.9,406.1 c -6.4,6.4 -15,9.9 -24,9.9 C 175.2,416 160,400.8 160,382.1 V 320 H 32 C 14.3,320 0,305.7 0,288 v -64 c 0,-17.7 14.3,-32 32,-32 h 128 v -62.1 c 0,-18.7 15.2,-33.9 33.9,-33.9 9,0 17.6,3.6 24,9.9 z M 352,96 h 64 c 17.7,0 32,14.3 32,32 v 256 c 0,17.7 -14.3,32 -32,32 h -64 c -17.7,0 -32,14.3 -32,32 0,17.7 14.3,32 32,32 h 64 c 53,0 96,-43 96,-96 V 128 C 512,75 469,32 416,32 h -64 c -17.7,0 -32,14.3 -32,32 0,17.7 14.3,32 32,32 z"></path></svg></div>
+              <div class="text">Login</div>
+          </button>
+        </a>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>
+</header>

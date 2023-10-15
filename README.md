@@ -86,10 +86,10 @@ Here are the views for the app:
 - `/`:
   1. Shows buttons for: `/user/login` `/user/register` if the user.is_authenticated (with a session manager), else `/user` `/user/logout`.
   2. Shows input fields for searching/filtering for books, or users. Results from either public books (where book.is_public).
-  3. Shows a list of public books. Where it redirects to `/book/<str:book.title>`, Then a user can add a rating, or comment.
-     * Adding a comment through the route `POST /book/<str:book.title>/comment`.
-       - Deleting a comment through `DELETE /book/<str:book.title>/comment/<int:comment.id>`.
-       - Editing a comment through `PUT /book/<str:book.title>/comment/<int:comment.id>`.
+  3. Shows a list of public books. Where it redirects to `/book/<int:book.id>`, Then a user can add a rating, or comment.
+     * Adding a comment through the route `POST /book/<int:book.id>/comment`.
+       - Deleting a comment through `DELETE /book/<int:book.id>/comment/<int:comment.id>`.
+       - Editing a comment through `PUT /book/<int:book.id>/comment/<int:comment.id>`.
 - `/user`:
   1. Shows profile data if the user is authenticated. Else it redirects to `/user/register` with a 401 status code.
   2.  `PUT /user`: edit the user profile with the same condition as 1.
@@ -97,9 +97,9 @@ Here are the views for the app:
   4.  `/user/login`: login for old users.
   5.  `/user/register`: register a new user.
   6.  `/user/book`: GET shows a list of user books, and POST adds a new book.
-      * `/user/book/<str:book.title>`: shows a book's data.
-      * `DELETE /user/book/<str:book.title>`: delete a book.
-      * `PUT /user/book/<str:book.title>`: edit a book.
+      * `/user/book/<int:book.id>`: shows a book's data.
+      * `DELETE /user/book/<int:book.id>`: delete a book.
+      * `PUT /user/book/<int:book.id>`: edit a book.
 
 ## Searching and Filtering
 

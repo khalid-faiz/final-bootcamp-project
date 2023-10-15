@@ -84,11 +84,11 @@ def book():
 
 
 # Route for user registration, allowing new users to create an account
-@user_bp.route("/register", methods=["GET", "POST"])
-def register():
+@user_bp.route("/signup", methods=["GET", "POST"])
+def signup():
     if current_user.is_authenticated:
         # If the user is already authenticated, display a message and redirect
-        flash("You are already registered.", "info")
+        flash("You are already signedup.", "info")
         return redirect(url_for("index.home"))
 
     # Create a registration form
@@ -103,10 +103,10 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        # Log in the newly registered user and display a success message
+        # Log in the newly signedup user and display a success message
         login_user(user)
         flash(
-            f"You registered and logged in {user.name}, Welcome to Bookishy", 
+            f"You signedup and logged in {user.name}, Welcome to Bookishy", 
             "success"
             )
 
@@ -115,10 +115,10 @@ def register():
     
     # Render the registration page with the registration form 
     # for "GET" requests
-    return render_template("user/register.html", form=form)
+    return render_template("user/signup.html", form=form)
 
 
-# Route for user login, allowing registered users to log in to their accounts
+# Route for user login, allowing signedup users to log in to their accounts
 @user_bp.route("/login", methods=["GET", "POST"])
 def login():
     if current_user.is_authenticated:
