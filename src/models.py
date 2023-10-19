@@ -146,12 +146,16 @@ class Comment(db.Model):
     is_editted = db.Column(db.Boolean, nullable=False, default=False)
     timestamp = db.Column(db.DateTime, server_default=func.now())
 
-    # Forign keys
     # Many-to-one
+    parent_comment = db.relationship('Comment', backref="comment", remote_side=[id])
+
+    # Forign keys
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     book_id = db.Column(db.Integer, db.ForeignKey('book.google_id'))
+    parent_comment_id = db.Column(db.Integer, db.ForeignKey('comment.id'))
 
-    def __init__(self, content, is_deleted, is_editted):
+
+    def __init__(self, content, is_deleted=False, is_editted=False):
         self.content = content
         self.is_deleted = is_deleted
         self.is_editted = is_editted

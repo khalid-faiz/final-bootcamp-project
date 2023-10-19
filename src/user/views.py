@@ -68,7 +68,6 @@ def book():
         # On if assertion failed, flash a massage to the user
         except AssertionError:
             flash("This book is already in your library", "info")
-        return redirect(url_for("user.book"))
 
     # Delete a user's book
     elif request.method == "DELETE":

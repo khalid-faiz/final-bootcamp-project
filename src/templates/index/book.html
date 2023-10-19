@@ -11,20 +11,20 @@
     <!-- page for /book/<google_id> -->
     <div class="book-page-container">
         <div class="book-page-info-bg">
-            <h2 id="book-title">New Scientist</h2>
+            <h2 id="book-title"></h2>
             <div id="book-info-container">
                 <div class="info-container">
                     <div>
                         <h3>Author</h3>
-                        <span id="book-author">Reed Business Information</span>
+                        <span id="book-author"></span>
                     </div>
                     <div>
                         <h3>Description</h3>
-                        <span id="book-description">New Scientist magazine was launched in 1956 "for all those men and women who are interested in scientific discovery, and in its industrial, commercial and social consequences". The brand's mission is no different today - for its consumers, New Scientist reports, explores and interprets the results of human endeavour set in the context of society and culture.</span>
+                        <span id="book-description"></span>
                     </div>
                     <div>
                         <h3>Publishing Date</h3>
-                        <span>1965-07-08</span>
+                        <span id="book-publishing-date"></span>
                     </div>
                     <div>
                         <h3>Categories</h3>
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="http://books.google.com.eg/books?id=Bff57um2QCIC&hl=&source=gbs_api">
+                <a id="book-link" href="http://books.google.com.eg/books?id=Bff57um2QCIC&hl=&source=gbs_api">
         
                     <div class="wrap">
                         <div class="book">
@@ -40,12 +40,12 @@
                             <span class="back"></span>
                             <span class="gloss">
                                 <img class="book-image"
-                                src="http://books.google.com/books/content?id=Bff57um2QCIC&printsec=frontcover&img=1&zoom=6&edge=curl&imgtk=AFLRE71gV9xSOemdpu4FA0sNPUP8nkklR0B2ow5iimI7V6y2nTYviMHXTI5eB0kt9ZgdGwPW0hqgr6k1nukzP32f6kxPmStlIFzlmT6h3WaskH7sfJZcYPegUETpG5CAWYmyrBmgKWS7&source=gbs_api"
+                                src=""
                                 alt="">
-                            <span id="book-page-count" class="count-badge">52 Pages</span>
+                            <span id="book-page-count" class="count-badge"></span>
                         </span>
                         <img class="book-image" id="dont-show"
-                        src="http://books.google.com/books/content?id=Bff57um2QCIC&printsec=frontcover&img=1&zoom=6&edge=curl&imgtk=AFLRE71gV9xSOemdpu4FA0sNPUP8nkklR0B2ow5iimI7V6y2nTYviMHXTI5eB0kt9ZgdGwPW0hqgr6k1nukzP32f6kxPmStlIFzlmT6h3WaskH7sfJZcYPegUETpG5CAWYmyrBmgKWS7&source=gbs_api"
+                        src=""
                         alt="">
                         </div>
                     </div>
@@ -161,53 +161,38 @@
             <br>
         </div>
         <div class="comments">
-            <div id="comments-divider"><span></span><h2>Comments</h2><span></span></div>
+            <div id="headings-divider"><span></span><h2>Comments</h2><span></span></div>
             <div class="comment-input">
-                <div class="row">
+                <form class="row" method="POST" action="{{ url_for('index.comment', google_id=google_id) }}">
                     <div class="col-1"></div>
-                    <textarea class="form-control" placeholder="Add a comment"></textarea>
+                    <textarea class="form-control" placeholder="Add a comment" name="comment_content"></textarea>
                     <button class="btn btn-secondary col-1">Add</button>
                     <div class="col-1"></div>
-                </div>
+                </form>
             </div>
             <div class="comments-container">
-                <div class="comment">
-                    <div class="comment-writer">Username</div>
-                    <div class="comment-timestamp">24 May 2023, 11:32 AM</div>
-                    <div class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime adipisci molestiae iusto eius optio inventore, repudiandae neque cum tempore asperiores velit officiis ut! Corrupti porro voluptatibus veritatis autem odio iure!</div>
-                    <div class="reply-to-comment">
-                        <div class="comment-reply-input hidden-input">
-                            <textarea class="form-control" placeholder="Add a comment"></textarea>
-                            <button class="btn btn-secondary col-1">Add</button>
-                        </div>
-                        <svg class="reply-icon" width="100px" height="100px" class="svg-icon" style="width: 1.75em; height: 1.75em;vertical-align: middle;fill: #FF7A59;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M356.6592 154.99264q17.32608 0 30.0032 12.4928t12.67712 30.16704-12.67712 30.33088l-198.67648 198.67648 409.33376 0q78.00832 0 149.17632 30.33088t122.49088 81.83808 81.83808 122.49088 30.49472 149.34016l0 42.65984q0 17.67424-12.4928 30.16704t-30.16704 12.4928q-17.32608 0-30.0032-12.67712t-12.67712-30.0032l0-42.65984q0-60.66176-23.67488-115.99872t-63.67232-95.3344-95.3344-63.67232-115.99872-23.67488l-409.33376 0 198.67648 199.00416q12.67712 12.67712 12.67712 30.0032 0 17.67424-12.4928 30.33088t-30.16704 12.67712-30.33088-12.67712l-271.33952-271.6672q-12.32896-12.32896-12.32896-30.33088 0-17.67424 12.32896-30.0032l271.33952-271.6672q12.67712-12.67712 30.33088-12.67712z"  /></svg>
-                    </div>
+                {% for comment in comments recursive %}
+                    {% set children_comments = comment.comments %}
                     <div class="comment">
-                        <div class="comment-writer">Username</div>
-                        <div class="comment-timestamp">24 May 2023, 11:32 AM</div>
-                        <div class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime adipisci molestiae iusto eius optio inventore, repudiandae neque cum tempore asperiores velit officiis ut! Corrupti porro voluptatibus veritatis autem odio iure!</div>
-                        <div class="comment">
-                            <div class="comment-writer">Username</div>
-                            <div class="comment-timestamp">24 May 2023, 11:32 AM</div>
-                            <div class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime adipisci molestiae iusto eius optio inventore, repudiandae neque cum tempore asperiores velit officiis ut! Corrupti porro voluptatibus veritatis autem odio iure!</div>
+                        <div class="comment-writer">{{comment.user.name}}</div>
+                        <div class="comment-timestamp">{{comment.timestamp}}</div>
+                        <div class="comment-content">{{comment.content}}</div>
+                        <div class="reply-to-comment">
+                            <form class="comment-reply-input hidden-input" action="{{ url_for('index.comment', google_id=google_id) }}" method="POST">
+                                <input type="hidden" name="parent_comment_id" value="{{comment.id}}">
+                                <textarea class="form-control" placeholder="Add a on {{comment.user.name}}'s comment" name="comment_content"></textarea>
+                                <button class="btn btn-secondary col-1">Add</button>
+                            </form>
+                            <button class="reply-icon btn btn-primary"></button>
                         </div>
+                        {% if children_comments %}
+                            {{ loop(children_comments) }}
+                        {% endif %}
                     </div>
-                </div>
-                <div class="comment">
-                    <div class="comment-writer">Username</div>
-                    <div class="comment-timestamp">24 May 2023, 11:32 AM</div>
-                    <div class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime adipisci molestiae iusto eius optio inventore, repudiandae neque cum tempore asperiores velit officiis ut! Corrupti porro voluptatibus veritatis autem odio iure!</div>
-                    <div class="comment">
-                        <div class="comment-writer">Username</div>
-                        <div class="comment-timestamp">24 May 2023, 11:32 AM</div>
-                        <div class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime adipisci molestiae iusto eius optio inventore, repudiandae neque cum tempore asperiores velit officiis ut! Corrupti porro voluptatibus veritatis autem odio iure!</div>
-                        <div class="comment">
-                            <div class="comment-writer">Username</div>
-                            <div class="comment-timestamp">24 May 2023, 11:32 AM</div>
-                            <div class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime adipisci molestiae iusto eius optio inventore, repudiandae neque cum tempore asperiores velit officiis ut! Corrupti porro voluptatibus veritatis autem odio iure!</div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
+                {% if not comments %}
+                    No comments found yet
+                {% endif %}
             </div>
         </div>
     </div>

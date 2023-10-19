@@ -1,0 +1,83 @@
+#landing-page{
+    display: flex;
+}
+
+#landing-text{
+    width:50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-family: 'Sofia', sans-serif;
+}
+#landing-text h1{
+    color: #0091AE;
+    font-family: inherit;
+    font-size: 10vw;
+}
+#landing-text p{
+    font-size: 1.1rem;
+    color:#FF7A59;
+}
+#headings-divider{
+    width:100% !important;
+    margin: 0 !important;
+}
+#headings-divider span:first-child, #headings-divider span:last-child {
+    width: 30% !important;
+}
+#headings-divider h2{
+    text-align: center;
+}
+
+.section-header {
+    display: block;
+    margin-top: 20px;
+    position: relative;
+    text-align: center;
+}
+
+#carousel-section {
+    padding-top: 50px;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-slider {
+    height: 560px;
+    position: relative;
+    width: 100%;
+}
+
+.carousel-slider.fullwidth {
+    height: 500px;
+}
+
+.carousel-slider.fullwidth .slider-item {
+    height: 480px;
+    line-height: 480px;
+    width: 100%
+}
+
+.slider-wrapper {
+    overflow: hidden;
+    position: relative;
+    transform-style: preserve-3d;
+    transform-origin: 0 50%;
+	perspective: 800px  !important;
+}
+
+.slider-item {
+    box-shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.12);
+    display: none;
+    position: absolute;
+    text-align: center;
+    left: 0;
+    top: 0;
+    width: 180px;
+    aspect-ratio: 0.6666667;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.book-1 {background-image: url(http://books.google.com/books/content?id=GbJOMQAACAAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE70Z4dW6pqxEzxeEV2xfokdyVPYXoj_HL44CTEF72LP2W3PjI0KyjfJuoTgA6u-PfOroLiwTrWLT54liYqzzUL1plMYdnUqyjl2iVypbiAEVsXhwK9pM9HYMi7NpwKENv0WKEFDp&source=gbs_api);}

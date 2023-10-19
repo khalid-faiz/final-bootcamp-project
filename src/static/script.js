@@ -73,8 +73,8 @@ function createBookCardHTML(item, withAddButton = true) {
             </div>
             </div>
             <div class="btn-group" role="group">
-            <button style="border-bottom-right-radius: 0 !important" type="button"
-                class="btn rounded-0 rounded-bottom btn-secondary">Book Page</button>
+            <a href="/book/${id}" style="border-bottom-right-radius: 0 !important" type="button"
+                class="btn rounded-0 rounded-bottom btn-secondary">Book Page</a>
             ${actionBtn}
             </div>
         </div>

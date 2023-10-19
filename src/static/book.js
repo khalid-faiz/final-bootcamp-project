@@ -3,9 +3,9 @@ const API_KEY = 'AIzaSyBO3N2mPgF_XdWZMGIdHWY_K6BTTr2fLBI';
 const API_ENDPOINT = 'https://www.googleapis.com/books/v1/volumes';
 
 // DOM elements
-const iconBtn = document.getElementsByClassName('reply-icon')[0];
+const iconBtns = document.querySelectorAll('.reply-icon');
 
-async function fetchAndRender(googleId, bookDbId){
+async function fetchAndRender(googleId){
     let item, response;
     if (!localStorage.getItem(googleId)) {
         response = await fetch(
@@ -28,12 +28,14 @@ async function fetchAndRender(googleId, bookDbId){
           description,
           pageCount,
           categories,
+          publishedDate,
           imageLinks: { thumbnail },
         },
       } = item;
-    document.getElementById('book-title').innerText = title;
-    document.getElementById('book-author').innerText = authors.join(" & ");
-    document.getElementById('book-page-count').innerText = `${pageCount} Pages`;
+      document.getElementById('book-title').innerText = title;
+      document.getElementById('book-author').innerText = authors.join(" & ");
+      document.getElementById('book-page-count').innerText = `${pageCount} Pages`;
+      document.getElementById('book-publishing-date').innerText = publishedDate;
     // Sanitize and limit the description length
     if (description) {
         // Created an element because sometime the des.
@@ -71,13 +73,15 @@ async function fetchAndRender(googleId, bookDbId){
 }
 
 // rendering the book's page
-const bookBasicData = JSON.parse(document.getElementById("book-data-dict").innerText)
+const googleId = document.getElementById("book-data-dict").innerText
 
-fetchAndRender(bookBasicData.google_id, bookBasicData.id);
+fetchAndRender(googleId);
 
 
-iconBtn.addEventListener('click', (event)=>{
-    const replyInput = event.target.parentElement.children[0];
+iconBtns.forEach(actionBtn=>{
+   actionBtn.addEventListener('click', (event)=>{
+    const parent = event.target.parentElement;
+    const replyInput = parent.children[0];
     if (replyInput.classList.contains('hidden-input')) {
       replyInput.classList.remove("hidden-input");
       replyInput.classList.remove("collapse-input");
@@ -87,3 +91,4 @@ iconBtn.addEventListener('click', (event)=>{
       replyInput.classList.add("collapse-input");
     }
   })
+})
