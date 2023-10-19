@@ -11,9 +11,11 @@
         <h1 class="h3 mb-3 fw-normal text-center">Please sign in</h1>
 
         <div class="form-floating">
+          {# Render the form passed to the template #}
           {{ form.email(placeholder="email", class="form-control mb-2") }}
           {{ form.email.label }}
             {% if form.email.errors %}
+            {# Check errors in the email field and show them #}
               {% for error in form.email.errors %}
               <div class="alert alert-danger" role="alert">
                 {{ error }}

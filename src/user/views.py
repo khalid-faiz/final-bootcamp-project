@@ -9,7 +9,7 @@ from src import bcrypt, db, login_manager
 from src.models import User, Book
 from .forms import LoginForm, RegisterForm
 
-# Create a Blueprint named "user" to organize routes and views related to
+# Create a Blueprint called "user" to organize routes and views related to
 # User management
 user_bp = Blueprint("user", __name__)
 

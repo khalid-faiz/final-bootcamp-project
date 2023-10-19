@@ -171,6 +171,7 @@
                 </form>
             </div>
             <div class="comments-container">
+                {# a recursive for loop for rendering the comments' tree #}
                 {% for comment in comments recursive %}
                     {% set children_comments = comment.comments %}
                     <div class="comment">
@@ -185,6 +186,7 @@
                             </form>
                             <button class="reply-icon btn btn-primary"></button>
                         </div>
+                        {# recurse if any child comments found #}
                         {% if children_comments %}
                             {{ loop(children_comments) }}
                         {% endif %}

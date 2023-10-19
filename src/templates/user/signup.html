@@ -10,6 +10,7 @@
         {{ form.csrf_token }}
         <h1 class="h3 mb-3 fw-normal text-center">Signup to Bookishy</h1>
 
+        {# Render the form and any errors found #}
         <div class="form-floating">
           {{ form.name(placeholder="name", class="form-control mb-2") }}
           {{ form.name.label }}

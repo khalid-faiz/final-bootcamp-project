@@ -5,7 +5,9 @@
   </ul>
 
   <div class="text-end" id="header-btn-container">
+    {# Check if the user is authenticated  and show Profile and logout buttons #}
     {% if current_user.is_authenticated %}
+      {# Check the path isn't the profile to show the profile button #}
       {% if request.path != '/user/' %}
         <a href="/user">
           <button class="header-btn blue-btn">
@@ -21,6 +23,7 @@
             <div class="text">Logout</div>
         </button>
       </a>
+    {# Show th signup and login buttons if the user is not authenticated #}
     {% else %}
       {% if request.path != '/user/signup' %}
         <a href="/user/signup">

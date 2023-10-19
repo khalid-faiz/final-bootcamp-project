@@ -48,7 +48,7 @@ Containing these columns:
 
 1. `id`.
 2. FK: `user.id`.
-3. FK: `book.id`.
+3. FK: `book.google_id`.
 4. `status`: 0,1,2 indicating to-read, reading and read.
 5. `notes`: user notes on this book.
 
@@ -61,14 +61,14 @@ Containing these columns:
 #### `book_category`: many-to-many
 
 1. `id`.
-2. FK: `book.id`.
+2. FK: `book.google_id`.
 3. FK: `category.id`.
 
 ### `book_user_comment`: many-to-many
 
 1. `id`.
 2. FK: `comment.id`.
-3. FK: `book.id` but the book in question should have `is_public` with a value of `1`.
+3. FK: `book.google_id` but the book in question should have `is_public` with a value of `1`.
 4. FK: `user.id`.
 5. FK: `book_user_comment.id`, for creating nested comments, if it's null, then will be a top-tree comment.
 
@@ -76,7 +76,7 @@ Containing these columns:
 
 1. `id`.
 2. `rating`: a string from 1-5.
-3. FK: `book.id` but the book in question should have `is_public` with a value of `1`.
+3. FK: `book.google_id` but the book in question should have `is_public` with a value of `1`.
 4. FK: `user.id`.
 
 ## Veiws
@@ -86,10 +86,8 @@ Here are the views for the app:
 - `/`:
   1. Shows buttons for: `/user/login` `/user/register` if the user.is_authenticated (with a session manager), else `/user` `/user/logout`.
   2. Shows input fields for searching/filtering for books, or users. Results from either public books (where book.is_public).
-  3. Shows a list of public books. Where it redirects to `/book/<int:book.id>`, Then a user can add a rating, or comment.
-     * Adding a comment through the route `POST /book/<int:book.id>/comment`.
-       - Deleting a comment through `DELETE /book/<int:book.id>/comment/<int:comment.id>`.
-       - Editing a comment through `PUT /book/<int:book.id>/comment/<int:comment.id>`.
+  3. Shows a list of public books. Where it redirects to `/book/<string:book.google_id>`, Then a user can add a rating, or comment.
+     * Adding a comment through the route `POST /book/<string:book.google_id>/comment`.
 - `/user`:
   1. Shows profile data if the user is authenticated. Else it redirects to `/user/register` with a 401 status code.
   2.  `PUT /user`: edit the user profile with the same condition as 1.
@@ -97,12 +95,10 @@ Here are the views for the app:
   4.  `/user/login`: login for old users.
   5.  `/user/register`: register a new user.
   6.  `/user/book`: GET shows a list of user books, and POST adds a new book.
-      * `/user/book/<int:book.id>`: shows a book's data.
-      * `DELETE /user/book/<int:book.id>`: delete a book.
-      * `PUT /user/book/<int:book.id>`: edit a book.
+      * `/user/book/<string:book.google_id>`: shows a book's data.
+      * `DELETE /user/book/<string:book.google_id>`: delete a book.
+      * `PUT /user/book/<string:book.google_id>`: edit a book.
 
 ## Searching and Filtering
 
-Now the important thing that worth noting, the search and filter functionality which will be available for almost all the data we have. With the following features.
-
-1. On home page: Filter search results based on public books (title, description or category), usernames (category interests), or comments.
+Done using google book api

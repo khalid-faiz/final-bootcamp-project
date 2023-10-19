@@ -5,10 +5,8 @@
 <div>
     <p>Username: {{ user.name }}</p>
     <p>Email: {{ user.email }}</p>
+    <br>
     <a href="{{ url_for('user.book')}}" class="btn btn-success">See your books</a>
-    <br>
-    <br>
-    <a class="btn btn-info">Edit</a>
 </div>
 
 {% endblock %}

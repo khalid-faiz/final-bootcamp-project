@@ -993,6 +993,7 @@
 <div id="carousel-slider">
 	<section id="carousel-section">
 		<div class="carousel-slider">
+            {# Add elements the same count as books, so it can be poulated in js #}
             {% for step in range(book_count) %}
 			<div class="slider-item" ></div>
             {% endfor %}
