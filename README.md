@@ -1,8 +1,8 @@
-# This is The Final EPFL Project
+# A Book Club Platform
 
 ## App Description
 
-Book-ishy is supposed to be a platform for readers, where they can add thier books, track thier progress, and add some notes in each book they add.
+Bookishy is supposed to be a platform for readers, where they can add thier books, track thier progress, and add some notes in each book they add.
 
 Also, users can view public books, which are added for the admin user page to moderate them, when ever 2 or more users have the same book. After approval, they become public books, which authenticated users can comment on, and comment on other peoples comments.
 
@@ -25,9 +25,7 @@ Containing these columns:
 
 ### `book`
 
-1. `id`.
-2. `google_id`: to retrive book's data from google.
-4. `is_public`: a boolean to indicate if the book is public.
+1. `google_id`: to retrive book's data from google, and acting as an id since its unique.
 
 ### `category`
 
@@ -102,3 +100,12 @@ Here are the views for the app:
 ## Searching and Filtering
 
 Done using google book api
+
+## Installling Requirements and Runnig
+
+Install the packages found in  requirements.txt, using pip (preferably in a virtual environment), and run theses commands:
+
+1. First time only to initialize the db: `python manage.py db init`
+2. Then to migrate from objects to a datbase: `python manage.py db migrate`
+3. Then to apply the migrations: `python manage.py db upgrade`
+4. Lastly to run the app use: `python manage.py run`
