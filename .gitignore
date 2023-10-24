@@ -1,5 +1,4 @@
 __pycache__/
-migrations/
 testing/
 db.sqlite
 temp/

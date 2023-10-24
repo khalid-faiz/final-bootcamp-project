@@ -54,18 +54,25 @@
         </div>
         <div class="rating-container">
             <div class="user-rating">
-                <h3>Rate the book</h3>
+                {% if not user_rating %}
+                    <h3>Rate the book</h3>
+                {% else %}
+                    <h3>Edit Rating</h3>
+                {% endif %}
                 <div class="stars-container">
-                    <span class="star"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
-                        <path d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
-                    c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
-                    c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685
-                    c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
-                    c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
-                    C22.602,0.567,25.338,0.567,26.285,2.486z" />
-                    </svg></span>
-                    <span class="star"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
+                    {% for val in range(0 if user_rating == 0 else 1, user_rating) %}
+                        <a href="/book/{{google_id}}/rating/{{val}}"><span class="star star-filled"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
+                            <path d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
+                        c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
+                        c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685
+                        c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
+                        c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
+                        C22.602,0.567,25.338,0.567,26.285,2.486z" />
+                            </svg></span></a>
+                    {% endfor %}
+                    {% if user_rating != 0 %}
+                        <span class="star star-filled no-pointer"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
                             <path d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
                             c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
@@ -74,7 +81,9 @@
                         c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
                         C22.602,0.567,25.338,0.567,26.285,2.486z" />
                         </svg></span>
-                    <span class="star"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
+                    {% endif %}
+                    {% for val in range(user_rating+1, 6) %}
+                        <a href="/book/{{google_id}}/rating/{{val}}"><span class="star"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
                             <path d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
                         c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
@@ -82,25 +91,8 @@
                         c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
                         c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
                         C22.602,0.567,25.338,0.567,26.285,2.486z" />
-                        </svg></span>
-                    <span class="star"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
-                            <path d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
-                            c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
-                        c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685
-                        c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
-                        c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
-                        C22.602,0.567,25.338,0.567,26.285,2.486z" />
-                        </svg></span>
-                    <span class="star"><svg height="35px" width="35px" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve">
-                            <path d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
-                        c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
-                        c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685
-                        c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
-                        c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
-                        C22.602,0.567,25.338,0.567,26.285,2.486z" />
-                        </svg></span>
+                            </svg></span></a>
+                    {% endfor %}
                 </div>
             </div>
             <br>
@@ -155,48 +147,52 @@
                         c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
                         C22.602,0.567,25.338,0.567,26.285,2.486z" />
                         </svg></span>
-                    <div class="average-rating"></div>
+                    <div class="average-rating" style="width: {{ average_rating }}%;"></div>
                 </div>
             </div>
             <br>
         </div>
-        <div class="comments">
-            <div id="headings-divider"><span></span><h2>Comments</h2><span></span></div>
-            <div class="comment-input">
-                <form class="row" method="POST" action="{{ url_for('index.comment', google_id=google_id) }}">
-                    <div class="col-1"></div>
-                    <textarea class="form-control" placeholder="Add a comment" name="comment_content"></textarea>
-                    <button class="btn btn-secondary col-1">Add</button>
-                    <div class="col-1"></div>
-                </form>
-            </div>
-            <div class="comments-container">
-                {# a recursive for loop for rendering the comments' tree #}
-                {% for comment in comments recursive %}
-                    {% set children_comments = comment.comments %}
-                    <div class="comment">
-                        <div class="comment-writer">{{comment.user.name}}</div>
-                        <div class="comment-timestamp">{{comment.timestamp}}</div>
-                        <div class="comment-content">{{comment.content}}</div>
-                        <div class="reply-to-comment">
-                            <form class="comment-reply-input hidden-input" action="{{ url_for('index.comment', google_id=google_id) }}" method="POST">
-                                <input type="hidden" name="parent_comment_id" value="{{comment.id}}">
-                                <textarea class="form-control" placeholder="Add a on {{comment.user.name}}'s comment" name="comment_content"></textarea>
-                                <button class="btn btn-secondary col-1">Add</button>
-                            </form>
-                            <button class="reply-icon btn btn-primary"></button>
+        {% if current_user.is_authenticated %}
+            <div class="comments">
+                <div id="headings-divider"><span></span><h2>Comments</h2><span></span></div>
+                <div class="comment-input">
+                    <form class="row" method="POST" action="{{ url_for('index.comment', google_id=google_id) }}">
+                        <div class="col-1"></div>
+                        <textarea class="form-control" placeholder="Add a comment" name="comment_content"></textarea>
+                        <button class="btn btn-secondary col-1">Add</button>
+                        <div class="col-1"></div>
+                    </form>
+                </div>
+                <div class="comments-container">
+                    {# a recursive for loop for rendering the comments' tree #}
+                    {% for comment in comments recursive %}
+                        {% set children_comments = comment.comments %}
+                        <div class="comment">
+                            <div class="comment-writer">{{comment.user.name}}</div>
+                            <div class="comment-timestamp">{{comment.timestamp}}</div>
+                            <div class="comment-content">{{comment.content}}</div>
+                            <div class="reply-to-comment">
+                                <form class="comment-reply-input hidden-input" action="{{ url_for('index.comment', google_id=google_id) }}" method="POST">
+                                    <input type="hidden" name="parent_comment_id" value="{{comment.id}}">
+                                    <textarea class="form-control" placeholder="Add a on {{comment.user.name}}'s comment" name="comment_content"></textarea>
+                                    <button class="btn btn-secondary col-1">Add</button>
+                                </form>
+                                <button class="reply-icon btn btn-primary"></button>
+                            </div>
+                            {# recurse if any child comments found #}
+                            {% if children_comments %}
+                                {{ loop(children_comments) }}
+                            {% endif %}
                         </div>
-                        {# recurse if any child comments found #}
-                        {% if children_comments %}
-                            {{ loop(children_comments) }}
-                        {% endif %}
-                    </div>
-                {% endfor %}
-                {% if not comments %}
-                    No comments found yet
-                {% endif %}
+                    {% endfor %}
+                    {% if not comments %}
+                        No comments found yet
+                    {% endif %}
+                </div>
             </div>
-        </div>
+        {% else %}
+            <h2 style="text-align: center;">Please login to see comments.</h2>
+        {% endif %}
     </div>
 
 {% endblock %}

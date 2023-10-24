@@ -35,7 +35,8 @@ def get_comment_branches(top_level_comments):
 def home():
     # Query all the books in the database and pass it to the template as a json string in a list form
     # Also pass the book count to the databse, so we can render that many elements in the DOM
-    books = list(map(lambda book:book.google_id,Book.query.all()))
+    books = list(map(lambda book:book.
+                     google_id,Book.query.all()))
     return render_template("index/home.html", books = json.dumps(books), book_count=len(books))
 
 # Route for a single book
@@ -49,6 +50,15 @@ def book(google_id):
         top_level_comments = Comment.query\
                     .filter(Comment.book_id == book.google_id)\
                     .filter(Comment.parent_comment_id == None).all()
+        try:
+            average_rating = 100 - 20*sum(map(lambda rating: rating.value, book.ratings)) / len(book.ratings)
+        except:
+            average_rating = 50
+        try:
+            user_rating = Rating.query\
+                .filter(Rating.user_id == current_user.id)\
+                .filter(Rating.book_id == google_id).first().value
+        except: user_rating = 0
     # Else, set the comments as an empty array
     else:
         top_level_comments = []
@@ -56,7 +66,9 @@ def book(google_id):
     return render_template(
             "index/book.html",
             google_id=google_id,
-            comments=get_comment_branches(top_level_comments)
+            comments=get_comment_branches(top_level_comments),
+            average_rating=str(average_rating),
+            user_rating=user_rating
         )
 # Route for adding a comment
 @index_bp.route("/book/<google_id>/comment", methods=["POST"])
@@ -93,6 +105,32 @@ def comment(google_id):
     # Add a parent comment if there is
     if parent_comment_id:
         comment.parent_comment_id = parent_comment_id
+
+    # Commit the session and redirect to the book page
+    db.session.commit()
+    return redirect(url_for("index.book", google_id=google_id))
+
+#  A route for adding a rating
+@index_bp.route("/book/<google_id>/rating/<int:value>")
+@login_required
+def rating(google_id, value):
+    user = current_user
+    book = Book.query.get(google_id)
+    # Create a book object if not found
+    if not book:
+        book = Book(google_id)
+    
+    rating = Rating.query\
+        .filter(Rating.book_id == google_id)\
+        .filter(Rating.user_id == user.id).first()
+    
+    if not rating:
+        rating = Rating(value)
+        user.ratings.append(rating)
+        book.ratings.append(rating)
+
+    else:
+        rating.value = value
 
     # Commit the session and redirect to the book page
     db.session.commit()

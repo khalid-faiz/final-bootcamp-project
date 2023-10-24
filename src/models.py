@@ -175,3 +175,5 @@ class Rating(db.Model):
     # Many-to-one
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     book_id = db.Column(db.Integer, db.ForeignKey('book.google_id'))
+    def __init__(self, value):
+        self.value = value
