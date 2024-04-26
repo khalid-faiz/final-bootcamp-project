@@ -105,6 +105,8 @@ Done using google book api
 
 Install the packages found in  requirements.txt, using pip (preferably in a virtual environment), and run theses commands:
 
+`pip install -r requirements.txt`
+
 1. First time only to initialize the db: `python manage.py db init`
 2. Then to migrate from objects to a datbase: `python manage.py db migrate`
 3. Then to apply the migrations: `python manage.py db upgrade`
