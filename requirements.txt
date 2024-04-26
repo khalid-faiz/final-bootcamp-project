@@ -10,5 +10,4 @@ flask-wtf
 jinja2
 mako
 nanoid
-ncurses
 wtforms
